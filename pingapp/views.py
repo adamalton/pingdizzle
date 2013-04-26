@@ -37,7 +37,7 @@ def spawn_pings(request, frequency):
             method="GET",
             countdown=delay
         )
-        #delay += interval
+        delay += interval
     return HttpResponse('done')
 
 
