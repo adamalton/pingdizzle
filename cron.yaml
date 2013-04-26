@@ -6,7 +6,7 @@ cron:
 
 - description: Daily Pings
   url: /protected/spawn_pings/DAILY/
-  schedule: every hour 00:00
+  schedule: every 1 hours
 
 - description: Hourly Pings
   url: /protected/spawn_pings/HOURLY/
