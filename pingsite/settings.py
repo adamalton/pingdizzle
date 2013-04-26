@@ -69,7 +69,6 @@ PINGCONF = {
         'http://marcherfencing.co.uk',
         'http://www.hiveworkshop.co.uk/',
         'http://www.tmtotnes.co.uk',
-        'http://wwalskdj.sdlfkj.com',
     ],
     'HOURLY': [
     ]
