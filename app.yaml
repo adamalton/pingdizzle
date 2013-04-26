@@ -9,6 +9,12 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+#Protected URLs
+- url: /protected/.*
+  script: main.handler
+  login: admin
+
+#Other URLs
 - url: .*
   script: main.handler
 
