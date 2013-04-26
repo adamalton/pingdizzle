@@ -1,8 +1,10 @@
+import os
+from google.appengine.api.app_identity import get_application_id
+
 DEBUG = "/Users/" in __file__ #On OS X
 TEMPLATE_DEBUG = DEBUG
 
-
-import os
+APP_ID = get_application_id()
 
 SECRET_KEY = '5te0=AhDvfgHU*&Jw(rm$INFC8MnZT7lspoubL-1jB3c+x2WKk'
 
@@ -54,8 +56,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #"django.contrib.messages.context_processors.messages",
     )
 
-DEFAULT_FROM_EMAIL = "noreply@pingdizzle.appspot.com"
+DEFAULT_FROM_EMAIL = "Pingdizzle <noreply@%s.appspotmail.com>" % APP_ID
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+
+PINGCONF = {
+    'DAILY': [
+        'http://adamalton.co.uk',
+        'http://adamalton.com',
+        'http://ffredjones.co.uk',
+        'http://kowethastringquartet.co.uk',
+        'http://marcherfencing.co.uk',
+        'http://www.hiveworkshop.co.uk/',
+        'http://www.tmtotnes.co.uk',
+        'http://wwalskdj.sdlfkj.com',
+    ],
+    'HOURLY': [
+    ]
+}
+
+SEND_DOWNTIME_NOTIFICATIONS_T0 = ADMINS
+
 
 try:
     from local_settings import *

@@ -3,20 +3,21 @@ import math
 from urllib import urlencode
 
 #LIBRARIES
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
 
 #PINGDIZZLE
-from pingapp.pingconf import PINGCONF, TIME_PERIODS
+from pingapp.globs import TIME_PERIODS
 from pingapp.utils import report_down
 
 
 def spawn_pings(request, frequency):
     """ Looks at the config of sites to ping and spawns a task to ping each one. """
     ping_task_url = reverse("do_ping")
-    urls_to_ping = PINGCONF[frequency]
+    urls_to_ping = settings.PINGCONF[frequency]
     #We want to spread out our tasks so that they don't all run at once and take us
     #over the free App Engine quota.  Pay money?!  Never!  So we spread them out
     #evenly over the hour/day.

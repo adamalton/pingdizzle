@@ -1,0 +1,5 @@
+
+TIME_PERIODS = {
+    'DAILY': 86400,
+    'HOURLY': 3600,
+}
