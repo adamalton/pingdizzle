@@ -1,0 +1,14 @@
+cron:
+#- description: keep alive
+#  url: /
+#  schedule: every 2 minutes
+
+
+- description: Daily Pings
+  url: /spawn_pings/DAILY/
+  schedule: every hour 00:00
+
+- description: Hourly Pings
+  url: /spawn_pings/HOURLY/
+  schedule: every day 0:00
+
