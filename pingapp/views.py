@@ -28,6 +28,8 @@ def spawn_pings(request, frequency):
     #We want to spread out our tasks so that they don't all run at once and take us
     #over the free App Engine quota.  Pay money?!  Never!  So we spread them out
     #evenly over the hour/day.
+    if not urls_to_ping:
+        return HttpResponse('No URLs to ping')
     interval = math.floor(float(TIME_PERIODS[frequency]) / float(len(urls_to_ping)))
     delay = 0
     for url in urls_to_ping:
