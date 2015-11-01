@@ -61,16 +61,14 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 
 PINGCONF = {
-    'DAILY': [
+    'HOURLY': [
         'http://adamalton.co.uk',
         'http://adamalton.com',
-        'http://ffredjones.co.uk',
         'http://kowethastringquartet.co.uk',
         'http://marcherfencing.co.uk',
-        'http://www.hiveworkshop.co.uk/',
         'http://www.tmtotnes.co.uk',
     ],
-    'HOURLY': [
+    'DAILY': [
     ]
 }
 
@@ -81,6 +79,3 @@ try:
     from local_settings import *
 except ImportError:
     pass
-
-
-
