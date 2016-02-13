@@ -48,7 +48,7 @@ def do_ping(request):
     error = None
     url = request.GET['url']
     try:
-        response = urlfetch.fetch(url)
+        response = urlfetch.fetch(url, validate_certificate=True)
     except urlfetch.DownloadError as e:
         error = e
     else:
