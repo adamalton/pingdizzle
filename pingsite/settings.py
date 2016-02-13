@@ -63,10 +63,12 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 PINGCONF = {
     'HOURLY': [
         'http://adamalton.co.uk',
-        'http://adamalton.com',
+        'https://adamalton.com',
         'http://kowethastringquartet.co.uk',
         'http://marcherfencing.co.uk',
         'http://www.tmtotnes.co.uk',
+        'http://rechar.gr',
+        'https://swappass.com',
     ],
     'DAILY': [
     ]
