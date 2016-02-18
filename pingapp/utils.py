@@ -9,11 +9,12 @@ from google.appengine.api import mail
 SUBJECT = "[PINGDIZZLE] DOWN: %s"
 BODY = """Hi %(name)s,
 
-The URL %(url)s is down.  The error is '%(error)s'.
+The URL %(url)s is down.  Made %(attempts)s attempts, the last of which failed with: '%(error)s'.
+
 """
 
 
-def report_down(url, error):
+def report_down(url, error, num_failed_attempts):
     """ Send notifications about a URL being down. """
     subject = SUBJECT % url
     for name, email in settings.SEND_DOWNTIME_NOTIFICATIONS_T0:
@@ -21,6 +22,7 @@ def report_down(url, error):
             'url': url,
             'error': error,
             'name': name,
+            'attempts': num_failed_attempts,
         }
         body = BODY % body_args
         message = mail.EmailMessage(

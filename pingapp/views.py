@@ -11,7 +11,7 @@ from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
 
 #PINGDIZZLE
-from pingapp.globs import TIME_PERIODS
+from pingapp.globs import TIME_PERIODS, NUM_ATTEMPTS_BEFORE_ALERTING
 from pingapp.utils import report_down
 
 
@@ -43,7 +43,7 @@ def spawn_pings(request, frequency):
     return HttpResponse('done')
 
 
-def do_ping(request):
+def do_ping(request, attempt=1):
     """ Check the given URL and send an email if it's down. """
     error = None
     url = request.GET['url']
@@ -56,5 +56,8 @@ def do_ping(request):
         if status_code[0] not in ('2', '3'):
             error = status_code
     if error:
-        report_down(url, error)
+        if attempt <= NUM_ATTEMPTS_BEFORE_ALERTING:
+            do_ping(request, attempt + 1)
+        else:
+            report_down(url, error, attempt)
     return HttpResponse('done')
