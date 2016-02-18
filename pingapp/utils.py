@@ -9,7 +9,8 @@ from google.appengine.api import mail
 SUBJECT = "[PINGDIZZLE] DOWN: %s"
 BODY = """Hi %(name)s,
 
-The URL %(url)s is down.  Made %(attempts)s attempts, the last of which failed with: '%(error)s'.
+The URL %(url)s is down.  Made %(attempts)s attempts, the last of which failed with:
+%(error)r.
 
 """
 

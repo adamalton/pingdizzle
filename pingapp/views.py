@@ -54,7 +54,7 @@ def do_ping(request, attempt=1):
     else:
         status_code = str(response.status_code)
         if status_code[0] not in ('2', '3'):
-            error = status_code
+            error = "Status: %s" % status_code
     if error:
         if attempt <= NUM_ATTEMPTS_BEFORE_ALERTING:
             do_ping(request, attempt + 1)
