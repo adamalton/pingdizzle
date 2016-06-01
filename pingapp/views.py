@@ -12,7 +12,11 @@ from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
 
 #PINGDIZZLE
-from pingapp.globs import TIME_PERIODS, NUM_ATTEMPTS_BEFORE_ALERTING
+from pingapp.globs import (
+    TIME_PERIODS,
+    NUM_ATTEMPTS_BEFORE_ALERTING,
+    ADDITIONAL_BACKOFF_SECONDS_PER_RETRY,
+)
 from pingapp.utils import report_down
 
 
@@ -58,7 +62,7 @@ def do_ping(request, attempt=1):
             error = "Status: %s" % status_code
     if error:
         if attempt < NUM_ATTEMPTS_BEFORE_ALERTING:
-            time.sleep(attempt * 5)
+            time.sleep(attempt * ADDITIONAL_BACKOFF_SECONDS_PER_RETRY)
             do_ping(request, attempt + 1)
         else:
             report_down(url, error, attempt)
