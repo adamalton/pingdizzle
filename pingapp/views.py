@@ -49,7 +49,7 @@ def do_ping(request, attempt=1):
     url = request.GET['url']
     try:
         response = urlfetch.fetch(url, validate_certificate=True)
-    except urlfetch.DownloadError as e:
+    except urlfetch.Error as e:
         error = e
     else:
         status_code = str(response.status_code)
