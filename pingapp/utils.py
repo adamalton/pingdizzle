@@ -33,4 +33,4 @@ def report_down(url, error, num_failed_attempts):
             body=body
         )
         message.send()
-    logging.error("%s is down", url)
+    logging.warning("%s is down", url)
