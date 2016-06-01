@@ -6,7 +6,7 @@ from urllib import urlencode
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.views.generic.simple import direct_to_template
+from django.shortcuts import render
 from google.appengine.api import taskqueue
 from google.appengine.api import urlfetch
 
@@ -17,7 +17,7 @@ from pingapp.utils import report_down
 
 def index(request):
     """ Home page. Just info about the app. """
-    return direct_to_template(request, "pingapp/index.html")
+    return render(request, "pingapp/index.html")
 
 
 
