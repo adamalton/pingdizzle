@@ -1,5 +1,6 @@
 #SYSTEM
 import math
+import time
 from urllib import urlencode
 
 #LIBRARIES
@@ -57,6 +58,7 @@ def do_ping(request, attempt=1):
             error = "Status: %s" % status_code
     if error:
         if attempt < NUM_ATTEMPTS_BEFORE_ALERTING:
+            time.sleep(attempt * 5)
             do_ping(request, attempt + 1)
         else:
             report_down(url, error, attempt)
