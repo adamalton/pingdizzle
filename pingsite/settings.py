@@ -68,7 +68,7 @@ PINGCONF = {
         'http://marcherfencing.co.uk',
         'http://www.tmtotnes.co.uk',
         'http://rechar.gr',
-        'https://swappass.com',
+        'https://twistpass.com',
     ],
     'DAILY': [
     ]
