@@ -64,7 +64,7 @@ PINGCONF = {
     'HOURLY': [
         'http://adamalton.co.uk',
         'https://adamalton.com',
-        'http://kowethastringquartet.co.uk',
+        'https://kowethastringquartet.co.uk',
         'http://marcherfencing.co.uk',
         'http://www.tmtotnes.co.uk',
         'https://twistpass.com',
