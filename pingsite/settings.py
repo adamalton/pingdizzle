@@ -66,7 +66,6 @@ PINGCONF = {
         'https://adamalton.com',
         'https://kowethastringquartet.co.uk',
         'http://marcherfencing.co.uk',
-        'http://www.tmtotnes.co.uk',
         'https://twistpass.com',
     ],
     'DAILY': [
