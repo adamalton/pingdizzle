@@ -1,7 +1,7 @@
-#SYSTEM
+# SYSTEM
 import logging
 
-#LIBRARIES
+# LIBRARIES
 from django.conf import settings
 from google.appengine.api import mail
 
@@ -16,21 +16,16 @@ The URL %(url)s is down.  Made %(attempts)s attempts, the last of which failed w
 
 
 def report_down(url, error, num_failed_attempts):
-    """ Send notifications about a URL being down. """
+    """Send notifications about a URL being down."""
     subject = SUBJECT % url
     for name, email in settings.SEND_DOWNTIME_NOTIFICATIONS_T0:
         body_args = {
-            'url': url,
-            'error': error,
-            'name': name,
-            'attempts': num_failed_attempts,
+            "url": url,
+            "error": error,
+            "name": name,
+            "attempts": num_failed_attempts,
         }
         body = BODY % body_args
-        message = mail.EmailMessage(
-            sender=settings.DEFAULT_FROM_EMAIL,
-            to=email,
-            subject=subject,
-            body=body
-        )
+        message = mail.EmailMessage(sender=settings.DEFAULT_FROM_EMAIL, to=email, subject=subject, body=body)
         message.send()
     logging.warning("%s is down", url)
