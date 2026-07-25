@@ -61,15 +61,12 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 
 PINGCONF = {
-    'HOURLY': [
-        'http://adamalton.co.uk',
-        'https://adamalton.com',
-        'https://kowethastringquartet.co.uk',
-        'http://marcherfencing.co.uk',
-        'https://twistpass.com',
+    "HOURLY": [
+        "http://adamalton.co.uk",
+        "https://adamalton.com",
+        "http://marcherfencing.co.uk",
     ],
-    'DAILY': [
-    ]
+    "DAILY": [],
 }
 
 SEND_DOWNTIME_NOTIFICATIONS_T0 = ADMINS
