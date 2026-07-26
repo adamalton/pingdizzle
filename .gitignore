@@ -33,3 +33,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+
+# This project
+.venv
+.cache
+.clouddata

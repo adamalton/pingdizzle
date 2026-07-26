@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+"""Django's command-line utility for administrative tasks."""
+
+import os
+import sys
+
+
+def main():
+    """Run administrative tasks."""
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pingsite.settings")
+
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+
+    from djangae.sandbox import start_emulators, stop_emulators
+
+    try:
+        # Start all emulators, persisting data if we're not testing
+        start_emulators(persist_data="test" not in sys.argv, emulators=["datastore"])
+        execute_from_command_line(sys.argv)
+    finally:
+        # Stop all emulators
+        stop_emulators()
+
+
+if __name__ == "__main__":
+    main()

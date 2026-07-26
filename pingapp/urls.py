@@ -1,8 +1,10 @@
-from django.conf.urls.defaults import patterns, url
+from django.urls import include, path
 
-urlpatterns = patterns(
-    "pingapp.views",
-    url(r"^$", "index"),
-    url(r"^protected/spawn_pings/([A-Z]+)/$", "spawn_pings", name="spawn_pings"),
-    url(r"^protected/do_ping/$", "do_ping", name="do_ping"),
-)
+from pingapp import views
+
+urlpatterns = [
+    path("_ah/", include("djangae.urls")),
+    path("_tasks/", include("djangae.tasks.urls")),
+    path("", views.index, name="index"),
+    path("spawn_pings/<str:frequency>/", views.spawn_pings, name="spawn_pings"),
+]

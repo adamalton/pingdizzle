@@ -1,23 +1,13 @@
-application: pingmysites
-version: 1
-runtime: python27
-api_version: 1
-threadsafe: yes
+runtime: python313
+
+# Enable the legacy bundled services (Task Queue, Mail, App Identity, and the
+# Users API) on the second-generation runtime.
+app_engine_apis: true
+
+# On Python 3 the runtime no longer maps URLs to scripts; instead it starts a
+# web server that runs our WSGI app and lets Django handle the routing.
+# entrypoint: gunicorn -b :$PORT main:app
 
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
-
-#Protected URLs
-- url: /protected/.*
-  script: main.handler
-  login: admin
-
-#Other URLs
 - url: .*
-  script: main.handler
-
-libraries:
-- name: django
-  version: "latest"
+  script: auto

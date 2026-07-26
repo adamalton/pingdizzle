@@ -1,0 +1,16 @@
+Django>=5.2,<6.0
+django-gcloud-connectors~=1.5
+djangae==2.0.0rc5
+
+# WSGI server used by the App Engine `entrypoint` in app.yaml
+# gunicorn>=23.0.0
+
+# Access to legacy App Engine bundled services (Task Queue, Mail, App Identity,
+# Users API) from the second-generation Python 3 runtime.
+appengine-python-standard>=1.1.0
+
+google-cloud-logging~=3.12
+
+# Outbound HTTP checks (replaces the old google.appengine.api.urlfetch service).
+requests>=2.32.0
+
